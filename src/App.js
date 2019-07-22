@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import GameNightContext from './GameNightContext'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+  static contextType = GameNightContext;
+  constructon(props){
+    super(props);
+    this.state = {
+      userName: {
+        value: ''
+      },
+      password: {
+        value: ''
+      },
+    }
+  }
 
-export default App;
+  updateuserName = (name) => {
+    this.setState({ userName: { value: name }})
+  }
+
+  updatePassword = (password) => {
+    this.setState({ password: { value: password }})
+  }
+
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  render() {
+    contextValue = {
+      userName: {
+        value: this.state.userName.value
+      },
+      password: {
+        value: this.state.password.value
+      },
+    }
+    return(
+      <GameNightContext.Provider value={contextValue}>
+        <div className='app-container'>
+          <Nav />
+          <Main /> 
+          <Sidebar />
+        </div>
+        </GameNightContext.Provider>
+    )
+  }
+}
