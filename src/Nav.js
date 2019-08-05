@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
-import { Router, Link } from 'react-router-dom'
 
 export default class Nav extends Component {
     render() {
         return(
             <div className='nav-container'>
-                <Link 
+                <a 
                   className='home'
-                  to={'/'}
+                  href={'/home'}
                 >
                     Home 
-                </Link>
-                <Link
+                </a>
+                <a
                   className='game-nights'
-                  to={'/game-nights'}
+                  href={'/game-nights'}
                 >
-                </Link>
+                    game nights
+                </a>
+                <a
+                  className='log-out'
+                  href={'/'}
+                >
+                    Log out
+                </a>
             </div>
         )
     }
